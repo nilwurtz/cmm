@@ -20,6 +20,9 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
+      - name: Cache cargo
+        uses: ./.github/actions/cache_cargo
+
       - name: Set up fmt and clippy
         uses: actions-rs/toolchain@v1
         with:
