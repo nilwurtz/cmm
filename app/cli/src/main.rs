@@ -11,6 +11,6 @@ fn main() {
 
     match cli.text {
         Some(text) => println!("{}", text),
-        _ => println!("no text!"),
+        _ => println!("No text :)"),
     }
 }
