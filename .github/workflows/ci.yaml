@@ -1,0 +1,58 @@
+name: "app test"
+
+on:
+  push:
+    branches:
+      - "master"
+    paths:
+      - app/**
+
+jobs:
+  fmt-and-clippy:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: smartround-api/
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Set up fmt and clippy
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: rustfmt, clippy
+
+      - name: Format
+        run: cargo fmt
+
+      - name: Apply format changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Auto format
+          branch: ${{ github.head_ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clippy
+        run: cargo clippy
+
+  unit-test:
+    runs-on: ubuntu-latest
+
+    needs: [fmt-and-clippy]
+
+    defaults:
+      run:
+        working-directory: app
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Cache cargo
+        uses: ./.github/actions/cache_cargo
+
+      - name: Run test
+        run: cargo test --all -- --nocapture
