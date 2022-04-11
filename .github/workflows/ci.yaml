@@ -10,9 +10,10 @@ on:
 jobs:
   fmt-and-clippy:
     runs-on: ubuntu-20.04
+
     defaults:
       run:
-        working-directory: smartround-api/
+        working-directory: app
 
     steps:
       - name: Checkout sources
@@ -35,7 +36,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Clippy
+      - name: Run clippy
         run: cargo clippy
 
   unit-test:
