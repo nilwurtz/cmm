@@ -1,4 +1,7 @@
 [workspace]
 members = [
     "cli",
+    "usecase",
+    "port",
+    "gateway",
 ]
