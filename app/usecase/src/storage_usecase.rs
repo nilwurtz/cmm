@@ -6,7 +6,7 @@ pub fn create_storage(local_file_port: impl LocalFilePort) -> anyhow::Result<(),
         Ok(()) => Ok(()),
         Err(e) => {
             println!("Error!");
-            return Err(e)
+            return Err(e);
         }
     }
 }
