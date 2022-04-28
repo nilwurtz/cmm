@@ -1,4 +1,3 @@
-
 use domain::errors::FileError;
 #[mockall_double::double]
 use driver::local_file_driver::local_file_driver;
@@ -11,7 +10,7 @@ impl LocalFilePort for LocalFileGateway {
         let result = local_file_driver::create_dir();
 
         if result.is_err() {
-            return Err(result.unwrap_err())
+            return Err(result.unwrap_err());
         };
         // TODO: use filename domain for create_file args.
         match local_file_driver::create_file("cmm_data".into()) {
@@ -27,8 +26,8 @@ impl LocalFilePort for LocalFileGateway {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use mockall::predicate::*;
     use domain::errors::FileError;
+    use mockall::predicate::*;
 
     #[test]
     fn create_file_test() {
