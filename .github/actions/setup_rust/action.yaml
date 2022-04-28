@@ -1,0 +1,33 @@
+name: setup_rust
+description: Setup rust
+
+inputs:
+  rust-version:
+    default: 1.60.0
+    required: false
+    description: Rust version.
+  rust-components:
+    default: ""
+    required: false
+    description: Rust toolchain components.
+
+runs:
+  using: composite
+
+  steps:
+    - name: Install latest nightly
+      uses: actions-rs/toolchain@v1
+      with:
+          toolchain: ${{ inputs.rust-version }}
+          components: rustfmt, clippy
+
+    - name: Cache cargo registry
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: ${{ runner.os }}-cargo-

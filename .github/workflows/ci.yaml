@@ -8,6 +8,9 @@ on:
       - app/**
       - .github/workflows/ci.yaml
 
+env:
+  RUST_VERSION: 1.60.0
+
 jobs:
   fmt-and-clippy:
     runs-on: ubuntu-20.04
@@ -20,14 +23,11 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Cache cargo
-        uses: ./.github/actions/cache_cargo
-
-      - name: Set up fmt and clippy
-        uses: actions-rs/toolchain@v1
+      - name: Setup rust ${{ env.RUST_VERSION }}
+        uses: ./.github/actions/setup_rust
         with:
-          toolchain: stable
-          components: rustfmt, clippy
+          rust-version: ${{ env.RUST_VERSION }}
+          rust-components: rustfmt, clippy
 
       - name: Format
         run: cargo fmt
@@ -56,8 +56,10 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Cache cargo
-        uses: ./.github/actions/cache_cargo
+      - name: Setup rust ${{ env.RUST_VERSION }}
+        uses: ./.github/actions/setup_rust
+        with:
+          rust-version: ${{ env.RUST_VERSION }}
 
       - name: Run test
         run: cargo test --all -- --nocapture
