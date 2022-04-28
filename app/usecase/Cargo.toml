@@ -10,3 +10,4 @@ anyhow = "1.0.56"
 mockall = "0.11.0"
 
 port = { path = "../port" }
+domain = { path = "../domain" }

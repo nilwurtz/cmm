@@ -1,7 +1,14 @@
+use domain::errors::FileError;
 use port::local_file_port::LocalFilePort;
 
-pub fn create_storage(local_file_port: impl LocalFilePort) -> anyhow::Result<()> {
-    local_file_port.create_file()
+pub fn create_storage(local_file_port: impl LocalFilePort) -> anyhow::Result<(), FileError> {
+    match local_file_port.create_file() {
+        Ok(()) => Ok(()),
+        Err(e) => {
+            println!("Error!");
+            return Err(e)
+        }
+    }
 }
 
 #[cfg(test)]
