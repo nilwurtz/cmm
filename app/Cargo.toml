@@ -1,7 +1,9 @@
 [workspace]
 members = [
     "cli",
-    "usecase",
-    "port",
+    "domain",
+    "driver",
     "gateway",
+    "port",
+    "usecase",
 ]
