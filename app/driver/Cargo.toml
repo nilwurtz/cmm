@@ -8,5 +8,6 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.57"
 mockall = "0.11.0"
+dirs = "4.0.0"
 
 domain = { path = "../domain" }
