@@ -9,7 +9,7 @@ impl LocalFilePort for LocalFileGateway {
     fn create_file(&self) -> anyhow::Result<(), FileError> {
         let result = local_file_driver::create_dir();
 
-        if result.is_err() {
+        if let Err(..) = result {
             return Err(result.unwrap_err());
         };
         // TODO: use filename domain for create_file args.

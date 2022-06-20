@@ -10,14 +10,15 @@ pub mod local_file_driver {
         let dir_path = home_dir().unwrap().as_path().join(".cmm");
         match fs::create_dir_all(dir_path.clone()) {
             Ok(_) => {
-                println!("Create data dir {}", dir_path.to_str().unwrap().to_string());
+                println!("Create data dir {}", dir_path.to_str().unwrap());
                 Ok(())
             }
             Err(e) => {
-                println!("Skip to create {}", dir_path.to_str().unwrap().to_string());
-                Err(domain::errors::FileError::CreateFailedError(
-                    format!("Failed to create {:?}", e.kind(),).to_string(),
-                ))
+                println!("Skip to create {}", dir_path.to_str().unwrap());
+                Err(domain::errors::FileError::CreateFailedError(format!(
+                    "Failed to create {:?}",
+                    e.kind()
+                )))
             }
         }
     }
