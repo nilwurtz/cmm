@@ -11,3 +11,4 @@ mockall = "0.11.0"
 dirs = "4.0.0"
 
 domain = { path = "../domain" }
+tracing = "0.1.35"

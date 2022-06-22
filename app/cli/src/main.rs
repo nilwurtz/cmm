@@ -1,3 +1,5 @@
+use std::process::exit;
+
 use clap::Parser;
 use gateway::local_file_gateway::LocalFileGateway;
 use usecase::storage_usecase;
@@ -11,7 +13,10 @@ struct Cli {
 fn main() {
     let cli = Cli::parse();
 
-    let _storage = storage_usecase::create_storage(LocalFileGateway);
+    if let Err(e) = storage_usecase::create_storage(LocalFileGateway) {
+        println!("Process exit: reason {:?}", e);
+        exit(1)
+    }
 
     match cli.text {
         Some(text) => println!("{}", text),
