@@ -44,7 +44,7 @@ mod tests {
             .times(1)
             .return_once(|_| Ok(()));
 
-        let actual = LocalFileGateway.create_file();
+        let actual = LocalFileGateway.create_storage();
         assert!(actual.is_ok())
     }
 
@@ -57,7 +57,7 @@ mod tests {
             .times(1)
             .return_once(|| Err(FileError::CreateFailedError("Failed to create dir.".into())));
 
-        let actual = LocalFileGateway.create_file();
+        let actual = LocalFileGateway.create_storage();
         assert!(actual.is_err())
     }
 }
