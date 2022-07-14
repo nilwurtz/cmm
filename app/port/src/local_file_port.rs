@@ -1,7 +1,6 @@
 use domain::errors::FileError;
-use mockall::automock;
 
-#[automock]
+#[mry::mry]
 pub trait LocalFilePort {
-    fn create_file(&self) -> anyhow::Result<(), FileError>;
+    fn create_storage(&self) -> anyhow::Result<(), FileError>;
 }

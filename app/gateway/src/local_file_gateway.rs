@@ -6,7 +6,7 @@ use port::local_file_port::LocalFilePort;
 pub struct LocalFileGateway;
 
 impl LocalFilePort for LocalFileGateway {
-    fn create_file(&self) -> anyhow::Result<(), FileError> {
+    fn create_storage(&self) -> anyhow::Result<(), FileError> {
         let result = local_file_driver::create_dir();
 
         if let Err(..) = result {

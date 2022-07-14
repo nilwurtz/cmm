@@ -30,11 +30,12 @@
 	"extensions": [
 		"vadimcn.vscode-lldb",
 		"mutantdino.resourcemonitor",
-		"matklad.rust-analyzer",
+		"rust-lang.rust-analyzer",
 		"tamasfe.even-better-toml",
 		"serayuzgur.crates",
 		"faceair.ayu-one-dark",
-		"PKief.material-icon-theme"
+		"PKief.material-icon-theme",
+		"vscodevim.vim"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
