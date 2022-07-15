@@ -3,7 +3,7 @@ description: Setup rust
 
 inputs:
   rust-version:
-    default: 1.60.0
+    default: 1.62.0
     required: false
     description: Rust version.
   rust-components:
