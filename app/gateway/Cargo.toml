@@ -6,9 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-anyhow = "1.0.56"
-mockall = "0.11.0"
-mockall_double = "0.2.1"
+anyhow = "1.0.58"
+mry = "0.2"
 
 port = { path = "../port" }
 driver = { path = "../driver" }

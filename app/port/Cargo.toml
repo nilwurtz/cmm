@@ -7,6 +7,6 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.58"
+mry = "0.2"
 
 domain = { path = "../domain"}
-mry = "0.2.4"
